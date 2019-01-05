@@ -52,9 +52,14 @@ public class Client extends javax.swing.JFrame{
                     } catch (IOException ex) {
                         Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    //if client got a message
                     if(msg_in.length() > 0){
 
-                        
+                        //Protocol for diconnecting: 
+                        //recieve a "\n\nYou are disconnecting" string
+                        //close socket and streams...
+                        //write to screen you are dis...
+                        //change button text to connect
                         if(msg_in.equals("\n\nYou are disconnecting")){
                             try {   
                                 //data_out.writeUTF("logout");
@@ -223,11 +228,11 @@ public class Client extends javax.swing.JFrame{
     /**
      * This is the button of "send message" logic.
      * Sends the name of the target + msg content with a # char to seperate them (As I configed the "send msg" protocol).
-     * If msg that was sent is Exit this will invoke the "disconnect protocol"
+     * If msg that was sent is "Exit" this will invoke the "disconnect protocol"
+     * Notice you can't send a message containing a '#'
      * @param evt 
      */
     private void btn_send_msgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_send_msgActionPerformed
-        // TODO add your handling code here:
         if(sending_to != null){
             if(!ta_msg_txt.getText().trim().contains("#")){
                 try{
@@ -286,9 +291,6 @@ public class Client extends javax.swing.JFrame{
             name = ta_your_name.getText().trim();
             if(name.length() > 0 && !name.equals("Your Name")){
                 try{
-                    //TODO
-
-                    System.out.println("in buttons \"Else\"");
                     if(!btn_connect.getText().equals("Enter IP")){
                         socket = new Socket(ip,1201);
                         btn_connect.setText("Send to:");
@@ -333,6 +335,7 @@ public class Client extends javax.swing.JFrame{
 
 
                 }catch(Exception e){
+                    ta_msg_area.setText("Error: " + e.getMessage() + " Most likely you didnt connect to a correct IP");
                     System.out.println("in button catch");
                 }
 

@@ -117,11 +117,11 @@ class ClientHandler extends Thread
     private void intro(){
         try {
             //String toreturn;
-            dos.writeUTF("\n You are connected!!!"
+            dos.writeUTF("\n\n You are connected!!!"
                     + "\nTo write to a certain person write the users name in the proper text Area"
                     + "\n then click on \"Send to\" button.\n"
-                    + "After words write a message and click on \"send\" "
-                    + "\n To broadcast do enter \"all\" as a recipient\n");
+                    + "Afterwards write a message and click on \"send\" "
+                    + "\n For broadcasting enter \"all\" as a recipient\n");
         } catch (IOException ex) {
             Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
         } 

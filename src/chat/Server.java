@@ -43,7 +43,7 @@ public class Server extends javax.swing.JFrame {
     // counter for clients 
     static int count = 0; 
     /**
-     * Creates new form of server chat room (NetBeans)
+     * Creates new form of server chat room (NetBeans) - GUI
      */
     public Server() {
         initComponents();
